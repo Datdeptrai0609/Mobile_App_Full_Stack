@@ -3,6 +3,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+//define socket io
+const server = require ('http').createServer();
+const io = require ('socket.io')(server);
+
+
 var path = require('path');
 
 app.get('/', (req,res) => {
