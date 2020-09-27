@@ -29,9 +29,11 @@
             console.log(`connect to server`);
         });
         var printName = () => {
+            //client talk to server
             clientSocket.emit("hello", 06092001);
             console.log("Sent the message!");
         }
+        //client listen from server
         clientSocket.on ("hello", data => {
             console.log(data);
         });

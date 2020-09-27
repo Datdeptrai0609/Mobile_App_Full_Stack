@@ -24,11 +24,13 @@ app.get('/', (req,res) => {
 
 //socketIO-server
 io.on("connection", (socket) => {
-    // console.log(`id connect: ${socket.id}`);
+    console.log(`id connect: ${socket.id}`);
     console.log(socket.id);
+    //server listen from client
     socket.on("hello", data => {
         console.log(`hello ${data}`);
-        io.sockets.emit("hello", "done to resend file");
+        //server talk to client
+        io.sockets.emit("hello", data);
     })
 });
 server.listen(port, () => {
