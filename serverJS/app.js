@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
     console.log(socket.id);
     socket.on("hello", data => {
         console.log(`hello ${data}`);
-        server.emit("hello", "done to resend file");
+        io.sockets.emit("hello", "done to resend file");
     })
 });
 server.listen(port, () => {
