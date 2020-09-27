@@ -18,15 +18,23 @@
 </head>
 <body>
     <div class="container">
+        <input type="text" id="resend"/>
         <input type="button" class="btn btn-outline-primary" name="click" value="click" onclick="printName()"/>
    
         <!-- socketIO client send to server -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script>
+        var clientSocket = io();
+        clientSocket.on("connect", () => {
+            console.log(`connect to server`);
+        });
         var printName = () => {
-            clientSocket.emit("hello Laughing!", 06092001);
+            clientSocket.emit("hello", 06092001);
             console.log("Sent the message!");
         }
+        clientSocket.on ("hello", data => {
+            console.log(data);
+        });
     </script>
 </body>
 </html>
